@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block container_content %}
+<style>
+    .active{
+        color:#09f;
+        border-bottom:3px solid #09f;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<br>
+
+    <table class="table table-sm table-bordered table-hover container" style="border-radius:1px;">
+      <thead>
+        <tr>
+          <th scope="col" class="col-sm-1">#</th>
+          <th scope="col" class="col-sm-1">Container ID</th>
+          <th scope="col" class="col-sm-5">Container Name</th>
+          <th scope="col" class="col-sm-3">Image ID</th>
+          <th scope="col" class="col-sm-1">Status</th>
+          <th scope="col" class="col-sm-1">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for container in containers %}
+        <tr>
+            <th class="col-sm-1" scope="row">{{loop.index}}</th>
+            <td class="col-sm-1">
+                <a href="{{url_for('container_details', container=container)}}">
+                    {{container.short_id}}
+                </a>
+            </td>
+            <td class="col-sm-5">
+                <a href="{{url_for('container_details', container=container)}}">
+                    {{container.name}}
+                </a>
+            </td>
+            <td class="col-sm-3">{{container.image.attrs.get('RepoTags')[0]}}</td>
+            <td class="col-sm-1 side-attrs">{{container.status.upper()}}</td>
+            <td class="col-sm-1 side-attrs">{{'STOP' if container.status.upper() == 'RUNNING'}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

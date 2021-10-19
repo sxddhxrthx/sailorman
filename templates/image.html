@@ -1,0 +1,17 @@
+<!-- TODO:-->
+<!--Create the Container Page inspired from github repository page-->
+
+{% extends 'details_base.html' %}
+
+
+{% block entity_content %}
+    <h1>Image Details Here</h1>
+{% endblock %}
+
+
+{% block entity_identifier %}
+        <a href="{{url_for('images')}}"> image </a>
+        /
+        <a href="{{url_for('image_details', img=image)}}">{{image.attrs['RepoTags']}}</a>
+{% endblock %}
+

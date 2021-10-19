@@ -1,0 +1,15 @@
+<nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                      {% if entity == 'container' %}
+                        <li class="breadcrumb-item"><a href="{{url_for('index')}}">container</a></li>
+                      {% elif entity == 'image' %}
+                        <li class="breadcrumb-item"><a href="{{url_for('images')}}">image</a></li>
+                      {% endif %}
+
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {% block entity_name %}
+
+                        {% endblock %}
+                    </li>
+                  </ol>
+                </nav>

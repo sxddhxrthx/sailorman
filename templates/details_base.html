@@ -1,0 +1,105 @@
+{% extends 'nav.html' %}
+
+  {% block content %}
+
+    <style>
+        .entity-header{
+            background: #FAFBFC;
+        }
+        .nav-link{
+            background: #FAFBFC;
+            color: #000000;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .nav{
+            background: #FAFBFC;
+        }
+        .active{
+            color:#09f;
+            border-bottom:3px solid #09f;
+        }
+        .nav-icon{
+            filter: invert(74%) sepia(3%) saturate(906%) hue-rotate(169deg) brightness(85%) contrast(84%);
+        }
+
+    </style>
+
+
+        <div class="p-3 entity-header">
+            <div class="col-md-6 px-3  text-truncate" >
+              <a href="#" class="pl-8">
+                  {% if entity == 'container' %}
+                  <img src="../static/img/cns.png"/>
+                  {% endif %}
+
+              </a>
+                {% block entity_identifier %}
+
+                {% endblock %}
+            </div>
+        </div>
+
+        <div class="entity-header">
+            <div class="col-md-12 px-3 py-1">
+                <nav class="nav  mb-3" role="tablist">
+                  <a class="nav-link active" id="summary-tab" href="#summary">
+                      <img src="../static/img/info-circle.svg" class="nav-icon"/>
+                      <span class="px-1">Summary</span>
+                  </a>
+                  <a class="nav-link" href="#accesscontrol">
+                      <img src="../static/img/eye.svg" class="nav-icon"/>
+                      <span class="px-1">Access Control</span>
+                  </a>
+                  <a class="nav-link" href="#image">
+                      <img src="../static/img/layers.svg" class="nav-icon"/>
+                      <span class="px-1">Image</span>
+                  </a>
+                  <a class="nav-link" href="#network">
+                      <img src="../static/img/hdd-network.svg" class="nav-icon"/>
+                      <span class="px-1">Network</span>
+                  </a>
+                  <a class="nav-link" href="#storage">
+                      <img src="../static/img/hdd-stack.svg" class="nav-icon"/>
+                      <span class="px-1">Storage</span>
+                  </a>
+                </nav>
+            </div>
+        </div>
+
+    <div class="tab-content" id="ex1-content">
+        <div class="tab-pane fade show active" id="summary">
+            <h4>Summary Here</h4>
+        </div>
+
+        <div class="tab-pane fade show" id="accesscontrol">
+            <h4>access control here</h4>
+        </div>
+
+        <div class="tab-pane fade show " id="image">
+            <h4>image</h4>
+        </div>
+
+        <div class="tab-pane fade show " id="network">
+            <h4>network</h4>
+        </div>
+
+        <div class="tab-pane fade show " id="storage">
+            <h4>storage</h4>
+        </div>
+    </div>
+
+
+
+
+        {% block entity_content %}
+
+
+
+        {% endblock %}
+
+  {% endblock %}
+
+

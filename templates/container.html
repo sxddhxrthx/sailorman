@@ -1,0 +1,16 @@
+<!-- TODO:-->
+<!--Create the Container Page inspired from github repository page-->
+
+{% extends 'details_base.html' %}
+
+
+{% block entity_content %}
+    {{container}}
+{% endblock %}
+
+
+{% block entity_identifier %}
+        <a href="{{url_for('index')}}"> container </a>
+        /
+        <a href="{{url_for('container_details', container=container)}}">{{container.name}}</a>
+{% endblock %}
