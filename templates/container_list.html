@@ -41,7 +41,15 @@
                 </a>
             </td>
             <td class="col-sm-3">{{container.image.attrs.get('RepoTags')[0]}}</td>
-            <td class="col-sm-1 side-attrs">{{container.status.upper()}}</td>
+            <td class="col-sm-1 side-attrs">
+               {% if container.status == 'running' %}
+                  <span class="badge bg-success">
+               {% elif container.status == 'exited' %}
+                  <span class="badge bg-secondary">
+               {% endif %}
+                     {{ container.status.upper() }}
+                  </span>
+            </td>
             <td class="col-sm-1 side-attrs">{{'STOP' if container.status.upper() == 'RUNNING'}}</td>
         </tr>
         {% endfor %}
