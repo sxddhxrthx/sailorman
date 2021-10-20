@@ -15,10 +15,7 @@ def index():
 @app.route('/container/<container>')
 def container_details(container):
     entity_type = 'container'
-    print(type(container))
-    print(container)
     container_id = container.split(':')[1].strip()[:-1]
-    print(container_id)
     container = client.containers.get(container_id)
     return render_template('container.html', container=container, entity=entity_type)
 
@@ -39,7 +36,6 @@ def service_list():
     print("Service Page")
     servicelist = client.services.list()
     return render_template('service.html', services = servicelist)
-   #  pass
 
 
 if __name__ == '__main__':

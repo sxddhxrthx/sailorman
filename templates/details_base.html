@@ -28,8 +28,8 @@
     </style>
 
 
-        <div class="p-3 entity-header">
-            <div class="col-md-6 px-3  text-truncate" >
+        <div class="p-3 entity-header d-flex">
+            <div class="col-md-6 px-3 text-truncate" >
               <a href="#" class="pl-8">
                   {% if entity == 'container' %}
                   <img src="../static/img/cns.png"/>
@@ -39,6 +39,13 @@
                 {% block entity_identifier %}
 
                 {% endblock %}
+            </div>
+            <div class="ms-auto">
+               <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-sm btn-primary">Left</button>
+                  <button type="button" class="btn btn-sm btn-primary">Middle</button>
+                  <button type="button" class="btn btn-sm btn-primary">Right</button>
+                </div>
             </div>
         </div>
 
