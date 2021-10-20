@@ -4,13 +4,63 @@
 {% extends 'details_base.html' %}
 
 
-{% block entity_content %}
-    {{container}}
-{% endblock %}
-
 
 {% block entity_identifier %}
         <a href="{{url_for('index')}}"> container </a>
         /
         <a href="{{url_for('container_details', container=container)}}">{{container.name}}</a>
+{% endblock %}
+
+{% block entity_content %}
+
+    <div class="container p-4">
+
+    <div class="p-2 mb-3 bg-light rounded-3">
+         <div class="container-fluid">
+            <table class="table  table-hover ">
+               <thead>
+               <tr class="d-flex">
+                  <th scope="col" class="col-lg-12" colspan="2" style="text-align: left;">Container Details:</th>
+               </tr>
+               </thead>
+               <tbody>
+                  <tr class="d-flex">
+                     <td class="col-sm-2">ID:</td>
+                     <td class="col-sm-10">{{container.id}}</td>
+                  </tr>
+                  <tr class="d-flex">
+                     <td class="col-sm-2">Image:</td>
+                     <td class="col-sm-10">
+                        <span class="badge bg-primary">
+                           {{','.join(container.image.attrs['RepoTags'])}}
+                        </span>
+                     </td>
+                  </tr>
+                  <tr class="d-flex">
+                     <td class="col-sm-2">Name:</td>
+                     <td class="col-sm-10">{{container.name}}</td>
+                  </tr>
+                  <tr class="d-flex">
+                     <td class="col-sm-2">IP Address:</td>
+                     <td class="col-sm-10">jkbjk</td>
+                  </tr>
+                  <tr class="d-flex">
+                     <td class="col-sm-2">Status</td>
+                     <td class="col-sm-10">{{container.status}}</td>
+                  </tr>
+                  <tr class="d-flex">
+                     <td class="col-sm-2">Created</td>
+                     <td class="col-sm-10">jkbjk</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+    </div>
+      
+    </div>
+
+  
+
+    
+
 {% endblock %}

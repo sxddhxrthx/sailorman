@@ -1,0 +1,55 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+
+<style>
+    .active{
+        color:#09f;
+        border-bottom:3px solid #09f;
+    }
+    .side-attrs {
+            text-align: center;
+        }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<nav class=" nav nav-fill">
+  <a class="nav-link" href="{{url_for('index')}}">Containers</a>
+  <a class="nav-link active" href="{{url_for('images')}}">Images</a>
+  <a class="nav-link" href="{{url_for('service_list')}}">Services</a>
+  <a class="nav-link" href="#">Secrets</a>
+  <a class="nav-link" href="#">Volumes</a>
+  <a class="nav-link" href="#">Networks</a>
+</nav>
+
+<br>
+
+    <table class="table table-sm table-bordered table-hover container" style="border-radius:1px;">
+      <thead>
+        <tr>
+          <th scope="col" class="col-sm-1">#</th>
+          <th scope="col" class="col-sm-5">Service ID</th>
+          <th scope="col" class="col-sm-5">Service Tag</th>
+          <th scope="col" class="col-sm-1">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for image in images %}
+        <tr>
+            <th class="col-sm-1" scope="row">{{loop.index}}</th>
+            <td class="col-sm-5">
+                <a href="{{url_for('image_details', image=image)}}">
+                    {{image}}{{image.id}}
+                </a>
+            </td>
+            <td class="col-sm-5">{{','.join(image.attrs['RepoTags'])}}</td>
+            <td scope="col-sm-1 side-attrs">DELETE</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

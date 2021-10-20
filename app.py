@@ -34,9 +34,12 @@ def image_details(image):
     entity_type = 'image'
     return render_template('image.html', image=image, entity=entity_type)
 
-
+@app.route('/services')
 def service_list():
-    pass
+    print("Service Page")
+    servicelist = client.services.list()
+    return render_template('service.html', services = servicelist)
+   #  pass
 
 
 if __name__ == '__main__':
