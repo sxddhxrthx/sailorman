@@ -16,7 +16,7 @@
 
 <div class="ms-auto">
    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-sm btn-primary">Start</button>
+      <button type="button" class="btn btn-sm btn-primary" {%if container.status == 'running'%}disabled{%endif%}>Start</button>
       <button type="button" class="btn btn-sm btn-primary">Stop</button>
       <button type="button" class="btn btn-sm btn-primary">Kill</button>
       <button type="button" class="btn btn-sm btn-primary">Restart</button>
