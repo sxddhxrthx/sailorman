@@ -71,6 +71,14 @@
                <img src="../static/img/hdd-stack.svg" class="nav-icon"/>
                <span class="px-1">Storage</span>
          </a>
+         <a class="nav-link" type="button" id="inspect-tab" data-bs-toggle="tab" data-bs-target="#nav-inspect" role="tab" aria-controls="nav-inspect" aria-selected="false">
+            <img src="../static/img/manage_search.svg" class="nav-icon"/>
+            <span class="px-1">Inspect</span>
+         </a>
+         <a class="nav-link" type="button" id="logs-tab" data-bs-toggle="tab" data-bs-target="#nav-logs" role="tab" aria-controls="nav-logs" aria-selected="false">
+            <img src="../static/img/description.svg" class="nav-icon"/>
+            <span class="px-1">Logs</span>
+         </a>
       </div>
    </nav>
 </div>
@@ -98,6 +106,18 @@
 
    <div class="tab-pane fade show" id="nav-storage" role="tabpanel" aria-labelledby="storage-tab">
       <h4>storage</h4>
+   </div>
+
+   <div class="tab-pane fade show" id="nav-inspect" role="tabpanel" aria-labelledby="inspect-tab">
+      <h4>inspect</h4>
+   </div>
+
+   <div class="tab-pane fade show" id="nav-logs" role="tabpanel" aria-labelledby="logs-tab">
+      
+         {% block container_logs %}
+         <!-- container logs goes here -->
+         {% endblock %}
+      
    </div>
 
 </div>
