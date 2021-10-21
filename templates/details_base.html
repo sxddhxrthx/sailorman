@@ -17,7 +17,7 @@
    .nav{
       background: #FAFBFC;
    }
-   .active{
+   .active-nav{
       color:#09f;
       border-bottom:3px solid #09f;
    }
@@ -47,49 +47,56 @@
 </div>
 
 
-<div class="entity-header col-md-12 px-3 py-1">
-   <nav class="nav  mb-3" role="tablist">
-      <a class="nav-link active" id="summary-tab" href="#summary">
-            <img src="../static/img/info-circle.svg" class="nav-icon"/>
-            <span class="px-1">Summary</span>
-      </a>
-      <a class="nav-link" href="#accesscontrol">
-            <img src="../static/img/eye.svg" class="nav-icon"/>
-            <span class="px-1">Access Control</span>
-      </a>
-      <a class="nav-link" href="#image">
-            <img src="../static/img/layers.svg" class="nav-icon"/>
-            <span class="px-1">Image</span>
-      </a>
-      <a class="nav-link" href="#network">
-            <img src="../static/img/hdd-network.svg" class="nav-icon"/>
-            <span class="px-1">Network</span>
-      </a>
-      <a class="nav-link" href="#storage">
-            <img src="../static/img/hdd-stack.svg" class="nav-icon"/>
-            <span class="px-1">Storage</span>
-      </a>
+<div class="entity-header col-md-12">
+   <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+         <a class="nav-link active-nav" type="button" id="summary-tab" data-bs-toggle="tab" data-bs-target="#nav-summary" role="tab" aria-controls="nav-summary" aria-selected="true">
+               <img src="../static/img/info-circle.svg" class="nav-icon"/>
+               <span class="px-1">Summary</span>
+         </a>
+         <a class="nav-link" type="button" id="accesscontrol-tab" data-bs-toggle="tab" data-bs-target="#nav-accesscontrol" role="tab" aria-controls="nav-accesscontrol" aria-selected="false">
+               <img src="../static/img/eye.svg" class="nav-icon"/>
+               <span class="px-1">Access Control</span>
+         </a>
+         <a class="nav-link" type="button" id="image-tab" data-bs-toggle="tab" data-bs-target="#nav-image" role="tab" aria-controls="nav-image" aria-selected="false">
+               <img src="../static/img/layers.svg" class="nav-icon"/>
+               <span class="px-1">Image</span>
+         </a>
+         
+         <a class="nav-link" type="button" id="network-tab" data-bs-toggle="tab" data-bs-target="#nav-network" role="tab" aria-controls="nav-network" aria-selected="false">
+               <img src="../static/img/hdd-network.svg" class="nav-icon"/>
+               <span class="px-1">Network</span>
+         </a>
+         <a class="nav-link" type="button" id="storage-tab" data-bs-toggle="tab" data-bs-target="#nav-storage" role="tab" aria-controls="nav-storage" aria-selected="false">
+               <img src="../static/img/hdd-stack.svg" class="nav-icon"/>
+               <span class="px-1">Storage</span>
+         </a>
+      </div>
    </nav>
 </div>
 
-<div class="tab-content" id="ex1-content">
-   <!-- <div class="tab-pane fade show active" id="summary">
-      <h4>Summary Here</h4>
-   </div> -->
+<div class="tab-content" id="nav-tabcontent">
+   <div class="tab-pane fade show active" id="nav-summary" role="tabpanel" aria-labelledby="summary-tab">
+      <h4>
+         {% block entity_content %}
+         <!-- container summary goes here -->
+         {% endblock %}
+      </h4>
+   </div>
 
-   <div class="tab-pane fade show" id="accesscontrol">
+   <div class="tab-pane fade show" id="nav-accesscontrol" role="tabpanel" aria-labelledby="accesscontrol-tab">
       <h4>access control here</h4>
    </div>
 
-   <div class="tab-pane fade show " id="image">
+   <div class="tab-pane fade show" id="nav-image" role="tabpanel" aria-labelledby="image-tab">
       <h4>image</h4>
    </div>
 
-   <div class="tab-pane fade show " id="network">
+   <div class="tab-pane fade show" id="nav-network" role="tabpanel" aria-labelledby="network-tab">
       <h4>network</h4>
    </div>
 
-   <div class="tab-pane fade show " id="storage">
+   <div class="tab-pane fade show" id="nav-storage" role="tabpanel" aria-labelledby="storage-tab">
       <h4>storage</h4>
    </div>
 
@@ -98,11 +105,7 @@
 
 
 
-        {% block entity_content %}
-
-
-
-        {% endblock %}
+        
 
   {% endblock %}
 
