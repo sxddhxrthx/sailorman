@@ -96,14 +96,20 @@
 
 {% block container_logs %}
 
-   <div class="container logs">
-
-      {% for log in container_logs %}
-         {{ log }}<br>
-      {% endfor %}
-
-      
-      
+   
+   <div class="container p-4 ">
+      <div class="p-2 mb-3 rounded-3">
+         <div class="container-fluid ">
+            <div class="card">
+               <h5 class="card-header">Logs for container: {{container.name}} [{{container.short_id}}]</h5>
+               <div class="card-body logs scroll min-vh-100">
+                  {% for log in container_logs %}
+                     {{ log }}<br>
+                  {% endfor %}
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
 
 {% endblock %}
