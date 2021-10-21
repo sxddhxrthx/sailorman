@@ -17,7 +17,8 @@ def container_details(container):
     entity_type = 'container'
     container_id = container.split(':')[1].strip()[:-1]
     container = client.containers.get(container_id)
-    return render_template('container.html', container=container, entity=entity_type)
+    container_logs = container.logs().decode('utf-8').split('\n')
+    return render_template('container.html', container=container, entity=entity_type, container_logs=container_logs)
 
 
 @app.route('/images')
