@@ -17,15 +17,15 @@
 {% block container_action %}
 
    <div class="ms-auto">
-      <div class="btn-group" role="group" aria-label="Basic example">
+      <div class="btn-group" role="group">
          <button type="button" class="btn btn-sm btn-primary" {%if container.status == 'running'%}disabled{%endif%}>Start</button>
-         <button type="button" class="btn btn-sm btn-primary">Stop</button>
-         <button type="button" class="btn btn-sm btn-primary">Kill</button>
-         <button type="button" class="btn btn-sm btn-primary">Restart</button>
+         <button type="button" class="btn btn-sm btn-primary" onclick="{{container.stop()}}" {%if container.status == 'exited'%}disabled{%endif%}>Stop</button>
+         <button type="button" class="btn btn-sm btn-primary" {%if container.status == 'exited'%}disabled{%endif%}>Kill</button>
+         <button type="button" class="btn btn-sm btn-primary" {%if container.status == 'exited'%}disabled{%endif%}>Restart</button>
       </div>
-      <div class="btn-group" role="group" aria-label="Basic example">
-         <button type="button" class="btn btn-sm btn-primary">Pause</button>
-         <button type="button" class="btn btn-sm btn-primary">Resume</button>
+      <div class="btn-group" role="group">
+         <button type="button" class="btn btn-sm btn-primary" {%if container.status == 'exited'%}disabled{%endif%}>Pause</button>
+         <button type="button" class="btn btn-sm btn-primary" {%if container.status == 'exited'%}disabled{%endif%}>Resume</button>
       </div>
    </div>
 
@@ -101,7 +101,7 @@
       <div class="p-2 mb-3 rounded-3">
          <div class="container-fluid ">
             <div class="card">
-               <h5 class="card-header">Logs for container: {{container.name}} [{{container.short_id}}]</h5>
+               <p class="card-header">Logs for container: {{container.name}} [{{container.short_id}}]</p>
                <div class="card-body logs scroll min-vh-100">
                   {% for log in container_logs %}
                      {{ log }}<br>

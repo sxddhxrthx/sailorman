@@ -8,7 +8,7 @@ client = docker.from_env()
 
 @app.route('/')
 def index():
-    cns = client.containers.list()
+    cns = client.containers.list(all=True)
     return render_template('container_list.html', containers=cns)
 
 
