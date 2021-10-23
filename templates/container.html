@@ -156,7 +156,9 @@
                         {% endfor %}
                      </div>
                   </div>
-                  <div class="tab-pane fade" id="inspect" role="tabpanel" aria-labelledby="inspect-tab">inspect here</div>
+                  <div class="tab-pane fade" id="inspect" role="tabpanel" aria-labelledby="inspect-tab">
+                     {{container_image_inspect_data | safe }}
+                  </div>
                </div>
             </div>
          </div>
