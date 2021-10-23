@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import docker
 from .container import Container
+import json
+from json2html import json2html
 
 app = Flask(__name__)
 client = docker.from_env()
@@ -18,7 +20,8 @@ def container_details(container):
     container_id = container.split(':')[1].strip()[:-1]
     container = client.containers.get(container_id)
     container_logs = container.logs().decode('utf-8').split('\n')
-    return render_template('container.html', container=container, entity=entity_type, container_logs=container_logs)
+    container_inspect_data = json2html.convert(json=json.dumps(container.attrs), table_attributes='class="table table-sm table-bordered"')
+    return render_template('container.html', container=container, entity=entity_type, container_logs=container_logs, container_inspect_data=container_inspect_data)
 
 
 @app.route('/images')
