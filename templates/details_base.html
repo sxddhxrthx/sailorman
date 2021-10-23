@@ -114,7 +114,9 @@
    </div>
 
    <div class="tab-pane fade show" id="nav-image" role="tabpanel" aria-labelledby="image-tab">
-      <h4>image</h4>
+      {% block image_data %}
+      <!-- image data goes here -->
+      {% endblock %}
    </div>
 
    <div class="tab-pane fade show" id="nav-network" role="tabpanel" aria-labelledby="network-tab">
@@ -127,6 +129,7 @@
 
    <div class="tab-pane fade show" id="nav-inspect" role="tabpanel" aria-labelledby="inspect-tab">
       {% block inspect_data %}
+      <!-- TODO: Add an "Export inspect data to JSON" button -->
       <!-- container inspect data goes here -->
       {% endblock %}
    </div>

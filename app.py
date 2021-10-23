@@ -21,7 +21,8 @@ def container_details(container):
     container = client.containers.get(container_id)
     container_logs = container.logs().decode('utf-8').split('\n')
     container_inspect_data = json2html.convert(json=json.dumps(container.attrs), table_attributes='class="table table-sm table-bordered"')
-    return render_template('container.html', container=container, entity=entity_type, container_logs=container_logs, container_inspect_data=container_inspect_data)
+    container_image_inspect_data = json2html.convert(json=json.dumps(container.image.attrs), table_attributes='class="table table-sm table-bordered"')
+    return render_template('container.html', container=container, entity=entity_type, container_logs=container_logs, container_inspect_data=container_inspect_data, container_image_inspect_data=container_image_inspect_data)
 
 
 @app.route('/images')

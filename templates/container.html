@@ -100,10 +100,69 @@
 <div class="container p-4 ">
    <div class="p-2 mb-3 rounded-3">
       <div class="container-fluid ">
-   {{container_inspect_data | safe }}
+         {{container_inspect_data | safe }}
       </div>
    </div>
 </div>
+{% endblock %}
+
+
+{% block image_data %}
+<div class="container p-4 ">
+   <div class="p-2 mb-3 rounded-3">
+      <div class="container-fluid ">
+         <div class="card text-center">
+            <div class="card-header">
+               <ul class="nav nav-pills" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="layer-tab" data-bs-toggle="tab" data-bs-target="#layer" type="button" role="tab" aria-controls="layer" aria-selected="true">
+                       Layers
+                     </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="inspect-tab" data-bs-toggle="tab" data-bs-target="#inspect" type="button" role="tab" aria-controls="inspect" aria-selected="false">
+                       Inspect
+                     </button>
+                  </li>
+               </ul>
+            </div>
+            <div class="card-body">
+               <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="layer" role="tabpanel" aria-labelledby="layer-tab">
+                     <div class="accordion" id="accordionExample">
+                        {% for layer in container.image.history() %}
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="heading{{loop.index}}">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapseOne">
+                              History Item #{{loop.index}}
+                            </button>
+                          </h2>
+                          <div id="collapse{{loop.index}}" class="accordion-collapse collapse show" aria-labelledby="heading{{loop.index}}" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <table class="table table-sm" style="text-align:left">
+                              
+                              <tbody>
+                              {% for attribute, value in layer.items() %}
+                              <tr class="d-flex">
+                                 <th class="col-sm-2">{{attribute}}</td>
+                                 <td class="col-sm-10">{{value}}</td>
+                              </tr>
+                              {% endfor %}
+                              </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                  </div>
+                  <div class="tab-pane fade" id="inspect" role="tabpanel" aria-labelledby="inspect-tab">inspect here</div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
 {% endblock %}
 
 
