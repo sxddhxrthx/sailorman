@@ -120,7 +120,9 @@
    </div>
 
    <div class="tab-pane fade show" id="nav-network" role="tabpanel" aria-labelledby="network-tab">
-      <h4>network</h4>
+      {% block network_data %}
+      <!-- network data goes here -->
+      {% endblock %}
    </div>
 
    <div class="tab-pane fade show" id="nav-storage" role="tabpanel" aria-labelledby="storage-tab">
